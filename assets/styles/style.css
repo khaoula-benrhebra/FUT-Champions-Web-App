@@ -18,7 +18,7 @@ ul li {
     background-color: rgb(218, 194, 194);
     display: grid;
     grid-template-columns: repeat(10, 1fr);
-    grid-template-rows: 50px 900px 50px;
+    grid-template-rows: 50px 1050px 50px;
     grid-template-areas: 
         "logo logo nav nav nav nav nav nav nav nav" 
         "sec sec sec sec sec sec sec sec sec sec"
@@ -35,32 +35,172 @@ section {
     grid-area: sec;
     display: grid;
     grid-template-columns:repeat(10, 1fr); 
-    grid-template-rows: 620px 300px;
+    grid-template-rows: 750px 300px;
     grid-template-areas: 
        "terrain terrain terrain terrain terrain terrain terrain form form form" 
-        "data data data data data data data data data data";
-      
+        "data data data data data data data data data data";     
     /* gap: 10px; */
     background-color: rgb(16, 15, 16);
     color: rgb(243, 240, 240);
 }
 
 .terrain {
-    grid-area: terrain;
-    
+    grid-area: terrain;   
      display: grid;
     background:url('../images/terrain2.png') no-repeat ;
     background-size:100% 100%;
-    margin-top: 10px;
-    color: black;
+    color: rgb(255, 255, 255);
     grid-template-columns: repeat(5,1fr);
-    grid-template-rows: repeat(4,1fr);
-    
+    grid-template-rows: repeat(4,1fr); 
 }
 .a1{
-     grid-area: 4 / 3 / 5 / 4;;
-
+     grid-area: 4 / 3 / 5 / 4;
+     
 }
+
+.image-container{
+    position: relative;
+    /* background-color: blue; */
+}
+
+.overlay-image {
+    position: absolute;  
+    top: 11%; 
+    left: 16%; 
+   
+    width: 95px; 
+    height: 90px; 
+}
+
+
+.name{
+    position: absolute;
+    font-size: 12px;
+    top:  57%;
+    left: 10%;
+    
+    font-weight: bold;
+    /* color: #00FFFF; */
+    color: #f3db05;
+    /* color: #5FD1F3; */
+    /* color: #C0C0C0; */
+    /* color: #D3D3D3; */
+}
+.rat{
+  position: absolute;
+  top: 8%;
+  left: 17%; 
+}
+.post{
+  position: absolute;
+  top: 17%;
+  left: 10%; 
+  font-size: 13px;
+  
+}
+.nat{
+    position: absolute;
+    top: 27%;
+    left: 11%;
+    width: 25px;
+  height: 15px;
+}
+.club{
+    position: absolute;
+    top:39%;
+    left: 11%;
+    width: 27px;
+  height: 17px;
+}
+.pace{
+    position: absolute;
+    font-size: 10px;   
+    top: 65%;
+    left: 20%;
+    
+}
+.pace-rate{
+    position: absolute;
+    font-size: 12px; 
+    font-weight: bold;
+    top: 64%;
+    left: 10%;
+}
+.shooting {
+    position: absolute;
+    font-size: 10px;
+    top: 71%;
+    left: 20%;
+}
+.shooting-rate{
+    position: absolute;
+    font-size: 12px; 
+    font-weight: bold;
+    top: 70%;
+    left: 10%;
+}
+.passing{
+    position: absolute;
+    font-size: 10px;
+    top: 77%;
+    left: 20%;
+}
+.passing-rate{
+    position: absolute;
+    font-size: 12px;
+    font-weight: bold;
+    top: 76%;
+    left: 10%;
+}
+.line{
+    position: absolute;
+    font-size: 10px;
+    top: 65%;
+    left: 31%;
+    width: 27px;
+  height: 40px;
+}
+.dribbling{
+    position: absolute; 
+    font-size: 10px;  
+    top: 65%;
+    left: 55%;
+}
+.dribbling-rate{
+    position: absolute;
+    font-size: 12px;
+    font-weight: bold;
+    top: 64%;
+    left: 45%;
+}
+.defending{
+    position: absolute;
+    font-size: 10px;
+    top: 71%;
+    left: 55%;
+}
+.defending-rate{
+    position: absolute;
+    font-size: 12px;
+    font-weight: bold;
+    top: 70%;
+    left: 45%;
+}
+.physical{
+    position: absolute;
+    font-size: 10px;
+    top: 77%;
+    left: 55%; 
+}
+.physical-rate{
+    position: absolute;
+    font-size: 12px;
+    font-weight: bold;
+    top: 76%;
+    left: 45%;
+}
+ 
+
 .a2{
     grid-area: 3 / 1 / 4 / 2;
 }
@@ -97,6 +237,56 @@ section {
     grid-area: form;
     background-color: rgb(144, 165, 165);
     color: black;
+}
+.form {
+    grid-area: form;
+    background-color: rgb(144, 165, 165);
+    color: black;
+    padding: 20px; 
+    border-radius: 10px; 
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); 
+    max-width: 500px; 
+    margin: auto; 
+}
+
+.form h2 {
+    text-align: center;
+    color: rgb(33, 150, 243);
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.form input {
+    background-color: rgb(50, 50, 50); 
+    color: white;
+    border: 1px solid gray;
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 1rem;
+    width: 100%;
+    transition: all 0.3s ease; 
+}
+
+.form input:focus {
+    outline: none;
+    border-color: rgb(33, 150, 243);
+    box-shadow: 0 0 8px rgb(33, 150, 243);
+}
+
+.form button {
+    background-color: rgb(33, 150, 243);
+    color: white;
+    padding: 12px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s ease;
+}
+
+.form button:hover {
+    background-color: rgb(30, 136, 229);
 }
 
 .data {

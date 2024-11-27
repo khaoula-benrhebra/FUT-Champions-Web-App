@@ -6,46 +6,172 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FUT-CHAMPIONS</title>
     <link rel="stylesheet" href="./assets/styles/style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
 <body>
     <div class="page">
-        <nav>
-            <ul>
-                <li>Home</li>
-            </ul>
+        <nav class="bg-black text-white shadow-lg fixed top-0 left-0 w-full z-50">
+            <div class="container mx-auto px-4 py-2.5 flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <img src="https://cdn-icons-png.flaticon.com/512/732/732233.png" alt="Logo"
+                        class="w-8 h-8 rounded-full">
+                    <span class="text-lg font-semibold tracking-wide uppercase">Fut-Champions</span>
+                </div>
+                <ul class="hidden md:flex space-x-6 text-sm font-medium flex-grow justify-center">
+                    <li>
+                        <a href="#"
+                            class="hover:bg-gradient-to-r hover:from-blue-500 hover:to-blue-300 hover:text-white px-3 py-1 rounded transition duration-300">
+                            Accueil
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="hover:bg-gradient-to-r hover:from-blue-500 hover:to-blue-300 hover:text-white px-3 py-1 rounded transition duration-300">
+                            Joueurs
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="hover:bg-gradient-to-r hover:from-blue-500 hover:to-blue-300 hover:text-white px-3 py-1 rounded transition duration-300">
+                            Équipes
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="hover:bg-gradient-to-r hover:from-blue-500 hover:to-blue-300 hover:text-white px-3 py-1 rounded transition duration-300">
+                            Actualités
+                        </a>
+                    </li>
+                </ul>
+                <div class="md:hidden flex items-center">
+                    <button id="menu-toggle" class="focus:outline-none">
+                        <svg class="w-5 h-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div id="mobile-menu" class="hidden bg-black md:hidden">
+                <ul class="flex flex-col space-y-3 py-2 text-center">
+                    <li><a href="#"
+                            class="hover:bg-gradient-to-r hover:from-blue-500 hover:to-blue-300 hover:text-white px-3 py-1 rounded">Calendrier</a>
+                    </li>
+                    <li><a href="#"
+                            class="hover:bg-gradient-to-r hover:from-blue-500 hover:to-blue-300 hover:text-white px-3 py-1 rounded">Joueurs</a>
+                    </li>
+                    <li><a href="#"
+                            class="hover:bg-gradient-to-r hover:from-blue-500 hover:to-blue-300 hover:text-white px-3 py-1 rounded">Équipes</a>
+                    </li>
+                    <li><a href="#"
+                            class="hover:bg-gradient-to-r hover:from-blue-500 hover:to-blue-300 hover:text-white px-3 py-1 rounded">Actualités</a>
+                    </li>
+                </ul>
+            </div>
         </nav>
         <section>
             <div class="terrain">
                 <div class="a1">
-                    <img src="./assets/images/car1.png" alt="" width="200" height="150">
+                    <div class="image-container">
+                        <img src="./assets/images/q-removebg-preview.png" alt="" width="135" height="100" class="background-image">
+                        <img src="https://cdn.sofifa.net/players/158/023/25_120.png" alt="" class="overlay-image">
+                        <h4 class="name">Cristiano Ronaldo</h4>
+                        <h4 class="rat" >99</h4>
+                        <h4 class="post">CAM</h4>
+                        <h4 class="nat"><img src="https://cdn.sofifa.net/flags/ar.png" alt="" ></h4>
+                        <h4 class="club"><img src="https://cdn.sofifa.net/meta/team/239235/120.png" width="30" height="30"></h4>
+                        <h4 class="pace">PAC</h4>
+                        <h4 class="pace-rate">56</h4>
+                        <h4 class="shooting ">SHO</h4>
+                        <h4 class="shooting-rate">57</h4>
+                        <h4 class="passing">PAS</h4>  
+                        <h4 class="passing-rate">58</h4>               
+                        <img  class="line" src="./assets/images/R-removebg-preview.png" alt="">
+                        <h4 class="dribbling">DRI</h4>
+                        <h4 class="dribbling-rate">59</h4>  
+                        <h4 class="defending">DEF</h4>
+                        <h4 class="defending-rate">60</h4>  
+                        <h4 class="physical">PHY</h4>
+                        <h4 class="physical-rate">62</h4> 
+                    </div>
                 </div>
-                <div class="a2"> 
-                    <img src="./assets/images/car1.png" alt="" width="200" height="150">
+                <div class="a2">
+                    <!-- <div class="image-container"> -->
+                        <img src="./assets/images/q-removebg-preview.png" alt="" width="135" height="100" class="background-image">
+                        <!-- <img  class="line" src="./assets/images/R-removebg-preview.png" alt=""> -->
+                        <!-- <img src="https://cdn.sofifa.net/players/158/023/25_120.png" alt="" class="overlay-image">
+                        <h4 class="name">Cristiano Ronaldo</h4>
+                        <h4 class="rat" >99</h4>
+                        <h4 class="post">CAM</h4>
+                        <h4 class="nat"><img src="https://cdn.sofifa.net/flags/ar.png" alt="" ></h4>
+                        <h4 class="club"><img src="https://cdn.sofifa.net/meta/team/239235/120.png" width="30" height="30"></h4>
+                        <h4 class="pace">PAC</h4>
+                        <h4 class="shooting ">SHO</h4>
+                        <h4 class="passing">PAS</h4>                       
+                        <img  class="line" alt="">
+                        <h4 class="dribbling">DRI</h4>
+                        <h4 class="defending">DEF</h4>
+                        <h4 class="physical">PHY</h4>
+                    </div> -->
                 </div>
                 <div class="a3">
-                    <img src="./assets/images/car1.png" alt="" width="200" height="150">
+                    <img src="./assets/images/q-removebg-preview.png" alt="" width="135" height="100">
                 </div>
                 <div class="a4">
-                    <img src="./assets/images/car1.png" alt="" width="200" height="150">
+                    <img src="./assets/images/q-removebg-preview.png" alt="" width="135" height="100">
                 </div>
                 <div class="a5">
-                    <img src="./assets/images/car1.png" alt="" width="200" height="150">
+                    <img src="./assets/images/q-removebg-preview.png" alt="" width="135" height="100">
                 </div>
-                <div class="a6"><img src="./assets/images/car1.png" alt="" width="200" height="150"></div>
-                <div class="a7"><img src="./assets/images/car1.png" alt="" width="200" height="150"></div>
-                <div class="a8"><img src="./assets/images/car1.png" alt="" width="200" height="150"></div>
-                <div class="a9"><img src="./assets/images/car1.png" alt="" width="200" height="150"></div>
-                <div class="a10"><img src="./assets/images/car1.png" alt="" width="200" height="150"></div>
-                <div class="a11"><img src="./assets/images/car1.png" alt="" width="200" height="150"></div>
+                <div class="a6"><img src="./assets/images/q-removebg-preview.png" alt="" width="135" height="100"></div>
+                <div class="a7"><img src="./assets/images/q-removebg-preview.png" alt="" width="135" height="100"></div>
+                <div class="a8"><img src="./assets/images/q-removebg-preview.png" alt="" width="135" height="100"></div>
+                <div class="a9"><img src="./assets/images/q-removebg-preview.png" alt="" width="136" height="100"></div>
+                <div class="a10"><img src="./assets/images/q-removebg-preview.png" alt="" width="135" height="100">
+                </div>
+                <div class="a11"><img src="./assets/images/q-removebg-preview.png" alt="" width="135" height="100">
+                </div>
             </div>
-            <div class="form">Form</div>
+            <div class="form">
+                <h2 class="text-3xl font-bold text-center text-blue-600 mb-6">Fiche du Joueur</h2>
+                <form class="space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <input type="text" placeholder="Nom" name="name">
+                        <input type="text" placeholder="Photo (URL)" name="photo">
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <input type="text" placeholder="Position" name="position">
+                        <input type="text" placeholder="Nationalité" name="nationality">
+                        <input type="text" placeholder="Drapeau" name="flag">
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <input type="text" placeholder="Club" name="club">
+                        <input type="text" placeholder="Logo du Club" name="logo">
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <input type="number" placeholder="Note" name="rating" min="0" max="100">
+                        <input type="number" placeholder="Vitesse" name="pace" min="0" max="100">
+                        <input type="number" placeholder="Tir" name="shooting" min="0" max="100">
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <input type="number" placeholder="Passe" name="passing" min="0" max="100">
+                        <input type="number" placeholder="Dribble" name="dribbling" min="0" max="100">
+                        <input type="number" placeholder="Défense" name="defending" min="0" max="100">
+                    </div>
+                    <div class="grid grid-cols-1 gap-4">
+                        <input type="number" placeholder="Physique" name="physical" min="0" max="100">
+                    </div>
+                    <button type="submit">
+                        Enregistrer
+                    </button>
+                </form>
+            </div>
             <div class="data">Data</div>
         </section>
         <footer>Footer</footer>
     </div>
-    
-
 </body>
 
 </html>
