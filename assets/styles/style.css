@@ -38,9 +38,10 @@ section {
     grid-template-rows: 750px 300px;
     grid-template-areas: 
        "terrain terrain terrain terrain terrain terrain terrain form form form" 
-        "data data data data data data data data data data";     
-    /* gap: 10px; */
-    background-color: rgb(16, 15, 16);
+        "data data data data data data data data data data";  
+        background: url('../images/u.jpg')  ;
+          
+
     color: rgb(243, 240, 240);
 }
 
@@ -48,6 +49,7 @@ section {
     grid-area: terrain;   
      display: grid;
     background:url('../images/terrain2.png') no-repeat ;
+    
     background-size:100% 100%;
     color: rgb(255, 255, 255);
     grid-template-columns: repeat(5,1fr);
@@ -58,10 +60,62 @@ section {
      
 }
 
+.photo-plyer{
+    display: block;
+    width: 90px;
+    height: 30px;
+    background: #f8f5f5;
+    padding: 2px 0 0 20px;
+    /* padding-left: 20px; */
+    margin-top:15px ;
+    /* margin-right: 1px; */
+    border-radius: 5px;
+} 
+.flag-nation{
+    display: block;
+    width: 90px;
+    height: 30px;
+    background: #f8f5f5;
+    padding: 2px 0 0 6px;
+    /* padding-left: 20px; */
+    margin-top:15px ;
+    /* margin-right: 5px; */
+    border-radius: 5px;
+}
+.flag-club{
+    display: block;
+    width: 90px;
+    height: 30px;
+    background: #f8f5f5;
+    padding: 2px 0 0 27px;
+    /* padding-left: 20px; */
+    margin-top:15px ;
+    /* margin-right: 5px; */
+    border-radius: 5px;
+}
+
+ #input-player{
+   display: none;
+ }
+ #input-nation{
+    display: none;
+ }
+ #input-club{
+    display: none;
+ }
 .image-container{
     position: relative;
     /* background-color: blue; */
 }
+
+.img-plyer {
+    width: 80px;
+    height: 80px;
+    border: 1px solid #ccc;
+    object-fit: cover; 
+    background-color: transparent; 
+}
+
 
 .overlay-image {
     position: absolute;  
@@ -233,11 +287,7 @@ section {
     grid-area: 1 / 4 / 2 / 5;
 }
 
-.form {
-    grid-area: form;
-    background-color: rgb(144, 165, 165);
-    color: black;
-}
+
 .form {
     grid-area: form;
     background-color: rgb(144, 165, 165);
@@ -291,7 +341,10 @@ section {
 
 .data {
     grid-area: data;
-    background-color: rgb(121, 188, 188);
+    background-color: rgb(2, 2, 2);
+    /* background: url('../images/mm.jpg') no-repeat ; */
+    /* background: url('https://i.pinimg.com/474x/de/d6/58/ded65802d159cdcc317ceb53f6e5da15.jpg') no-repeat; */
+    /* background-size: cover; */
     color: black;
 }
 
