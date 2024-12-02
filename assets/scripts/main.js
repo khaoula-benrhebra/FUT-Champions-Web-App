@@ -5,6 +5,9 @@ let Gardient = document.getElementById('Gardient')
 let position = document.getElementById('position')
 const myForm = document.getElementById('myForm')
 let getDataStorage = localStorage.getItem('users')
+let parseUsers = JSON.parse(getDataStorage) || []
+let editUserId = null;
+let editMode = false;
 
 function plyerAndgk() {
   let choix = position.value
@@ -29,12 +32,9 @@ function initializeFormValidation() {
     errorMsgs.forEach((msg) => (msg.style.display = 'none')) // Réinitialise les erreurs
 
     // Validation Nom
-    let parseUsers = JSON.parse(getDataStorage) || []
     const name = document.querySelector("input[name='name']")
-    const filterName = parseUsers.find(el => el.name === name.value)
-    console.log('filterName', filterName)
     const nameRegex = /^[A-Za-zÀ-ÿ\s]{2,}$/
-    if (!nameRegex.test(name.value) || filterName) {
+    if (!nameRegex.test(name.value)) {
       name.nextElementSibling.style.display = 'block'
       isValid = false
     }
@@ -44,15 +44,6 @@ function initializeFormValidation() {
       validateGKFields()
     } else if (positionValue !== 'Choisissez Votre Joueur') {
       validatePlayerFields()
-    }
-
-    // Affiche le message d'erreur global si le formulaire est invalide
-    const formErrorMsg = document.getElementById('form-error-msg')
-    if (!isValid) {
-      formErrorMsg.style.display = 'block'
-    } else {
-      formErrorMsg.style.display = 'none' // Masquer le message global si tout est valide
-      handleAddUser()
     }
 
     function validatePlayerFields() {
@@ -90,6 +81,16 @@ function initializeFormValidation() {
         isValid = false
       }
     }
+
+    // Affiche le message d'erreur global si le formulaire est invalide
+    const formErrorMsg = document.getElementById('form-error-msg')
+    if (!isValid) {
+      formErrorMsg.style.display = 'block'
+    } else {
+      formErrorMsg.style.display = 'none' // Masquer le message global si tout est valide
+      handleAddUser()
+      addElementHtml()
+    }
   })
 }
 
@@ -108,11 +109,25 @@ function handleAddUser() {
     acc[input.name] = input.value
     return acc
   }, {})
-
-  let parseData = JSON.parse(getDataStorage) || []
-  console.log('parseData', parseData)
-  parseData.push(visibleData)
-  localStorage.setItem('users', JSON.stringify(parseData))
+  if (!editMode && !editUserId ) {
+      // Générer un identifiant unique pour l'utilisateur
+      const uniqueId = generateUniqueId();
+      visibleData.id = uniqueId; // Ajouter l'ID unique à l'objet utilisateur
+    
+      const getDataStorage = localStorage.getItem('users');
+      parseUsers = JSON.parse(getDataStorage) || [];
+      let data = parseUsers
+      data.push(visibleData)
+      localStorage.setItem('users', JSON.stringify(data))
+  }else if(editMode && editUserId){
+    const getDataStorage = localStorage.getItem('users');
+    parseUsers = JSON.parse(getDataStorage) || [];
+    let users = parseUsers
+    const filterUserWithoutUpdatedUser = users.filter(user => user.id !== editUserId);
+    visibleData.id = editUserId
+    filterUserWithoutUpdatedUser.push(visibleData)
+    localStorage.setItem('users', JSON.stringify(filterUserWithoutUpdatedUser))
+  }
 
   console.log('Données visibles :', visibleData)
   // Réinitialiser le formulaire
@@ -123,94 +138,102 @@ function handleAddUser() {
   Gardient.style.display = 'none'
 
   alert('Utilisateur ajouté avec succès !')
-  handleDisplayUsers()
 }
 
-function handleDisplayUsers() {
-    let parseUsers = JSON.parse(getDataStorage) || []
-    addElementHtml(parseUsers)
-
+// Fonction pour générer un ID unique
+function generateUniqueId() {
+  return 'user-' + Math.floor(Math.random() * 1000);
 }
 
-handleDisplayUsers()
 
-function addElementHtml(data = []) {
-    const containers = {
-        "GK": document.getElementsByClassName("a1")[0],
-        "LB": document.getElementsByClassName("a2")[0],
-        "CB1": document.getElementsByClassName("a3")[0],
-        "CB2": document.getElementsByClassName("a4")[0],
-        "RB": document.getElementsByClassName("a5")[0],
-        "CM1": document.getElementsByClassName("a6")[0],
-        "CM2": document.getElementsByClassName("a7")[0],
-        "CM3": document.getElementsByClassName("a8")[0],
-        "LW": document.getElementsByClassName("a9")[0],
-        "ST": document.getElementsByClassName("a10")[0],
-        "RW": document.getElementsByClassName("a11")[0],
-    };
+function addElementHtml() {
+    const getDataStorage = localStorage.getItem('users');
+    parseUsers = JSON.parse(getDataStorage) || [];
+  const containers = {
+    "GK": document.getElementsByClassName("a1")[0],
+    "LB": document.getElementsByClassName("a2")[0],
+    "CB1": document.getElementsByClassName("a3")[0],
+    "CB2": document.getElementsByClassName("a4")[0],
+    "RB": document.getElementsByClassName("a5")[0],
+    "CM1": document.getElementsByClassName("a6")[0],
+    "CM2": document.getElementsByClassName("a7")[0],
+    "CM3": document.getElementsByClassName("a8")[0],
+    "LW": document.getElementsByClassName("a9")[0],
+    "ST": document.getElementsByClassName("a10")[0],
+    "RW": document.getElementsByClassName("a11")[0],
+  };
 
-    // Vider tout contenu existant pour chaque conteneur
-    Object.values(containers).forEach(container => container.innerHTML = "");
-    const reserveContainer = document.getElementById('reserve-container');
-    reserveContainer.innerHTML = "";
+  const reserves = {
+    "GK": document.getElementsByClassName("rese1")[0],
+    "LB": document.getElementsByClassName("rese2")[0],
+    "CB": document.getElementsByClassName("rese3")[0],
+    "RB": document.getElementsByClassName("rese4")[0],
+    "CM": document.getElementsByClassName("rese5")[0],
+    "LW": document.getElementsByClassName("rese6")[0],
+    "ST": document.getElementsByClassName("rese7")[0],
+    "RW": document.getElementsByClassName("rese8")[0],
+  };
+  // Vider tout contenu existant pour chaque conteneur
+  Object.values(containers).forEach(container => container.innerHTML = "");
+  Object.values(reserves).forEach(reserve => reserve.innerHTML = "");
 
-    const positionLimits = {
-        "GK": 1,
-        "LB": 1,
-        "CB": 2,
-        "RB": 1,
-        "CM": 3,
-        "LW": 1,
-        "ST": 1,
-        "RW": 1,
-    };
+  const positionLimits = {
+    "GK": 1,
+    "LB": 1,
+    "CB": 2,
+    "RB": 1,
+    "CM": 3,
+    "LW": 1,
+    "ST": 1,
+    "RW": 1,
+  };
 
-    const positionCounters = {};
+  const positionCounters = {};
 
-    data.forEach(user => {
-        let ajout = null;
+  parseUsers.forEach(user => {
+    let ajout = null;
 
-        switch (user?.position) {
-            case "GK":
-                ajout = containers["GK"];
-                break;
-            case "LB":
-                ajout = containers["LB"];
-                break;
-            case "CB":
-                ajout = containers["CB1"].children.length === 0 ? containers["CB1"] : containers["CB2"];
-                break;
-            case "RB":
-                ajout = containers["RB"];
-                break;
-            case "CM":
-                ajout = containers["CM1"].children.length === 0 ? containers["CM1"] : containers["CM2"].children.length === 0 ? containers["CM2"] : containers["CM3"];
-                break;
-            case "LW":
-                ajout = containers["LW"];
-                break;
-            case "ST":
-                ajout = containers["ST"];
-                break;
-            case "RW":
-                ajout = containers["RW"];
-                break;
-            default:
-                return; 
-        }
+    switch (user?.position) {
+      case "GK":
+        ajout = containers["GK"];
+        break;
+      case "LB":
+        ajout = containers["LB"];
+        break;
+      case "CB":
+        ajout = containers["CB1"].children.length === 0 ? containers["CB1"] : containers["CB2"];
+        break;
+      case "RB":
+        ajout = containers["RB"];
+        break;
+      case "CM":
+        ajout = containers["CM1"].children.length === 0 ? containers["CM1"] : containers["CM2"].children.length === 0 ? containers["CM2"] : containers["CM3"];
+        break;
+      case "LW":
+        ajout = containers["LW"];
+        break;
+      case "ST":
+        ajout = containers["ST"];
+        break;
+      case "RW":
+        ajout = containers["RW"];
+        break;
+      default:
+        return;
+    }
 
-        if (ajout && (positionCounters[user.position] || 0) < positionLimits[user.position]) {
-            positionCounters[user.position] = (positionCounters[user.position] || 0) + 1;
-            ajout.insertAdjacentHTML('beforeend', generatePlayerHTML(user));
-        } else {
-            reserveContainer.insertAdjacentHTML('beforeend', generatePlayerHTML(user));
-        }
-        console.log('positionCounters', positionCounters)
-    });
+    if (ajout && (positionCounters[user.position] || 0) < positionLimits[user.position]) {
+      positionCounters[user.position] = (positionCounters[user.position] || 0) + 1;
+      ajout.insertAdjacentHTML('beforeend', generatePlayerHTML(user));
+    } else {
+        reserves[user.position]?.insertAdjacentHTML('beforeend', generatePlayerHTML(user));
+    }
+    console.log('positionCounters', positionCounters)
+  });
 }
-
+addElementHtml()
 function generatePlayerHTML(user) {
-    return `<div class="image-container" onclick="openPopup('${user.name}')">
+  return `<div class="image-container" onclick="openPopup('${user.id}')">
         <div class="elementPosition">
           <div class="profile">
             <div class="clubInfos">
@@ -241,16 +264,66 @@ function generatePlayerHTML(user) {
 }
 
 
-let selectedUserName = null;
+let selectedUserId = null;
 
-function openPopup(userName) {
-    selectedUserName = userName;
-    document.getElementById("popup").style.display = "flex";
+function openPopup(id) {
+  selectedUserId = id;
+  console.log('insideopen pup', id);
+
+  document.getElementById("popup").style.display = "flex";
 
 
 }
 
 function closePopup() {
-    document.getElementById("popup").style.display = "none";
-    selectedUserName = null;
+  document.getElementById("popup").style.display = "none";
+  selectedUserId = null;
+}
+
+
+function removeUser() {
+  if (!selectedUserId) {
+    return
+  }
+  let parseUsers = JSON.parse(localStorage.getItem('users')) || [];
+  parseUsers = parseUsers.filter(user => user.id !== selectedUserId);
+  localStorage.setItem('users', JSON.stringify(parseUsers));
+  console.log('inside remove', selectedUserId);
+  addElementHtml();
+  closePopup();
+}
+
+
+function HandleEdite() {
+    if (!selectedUserId) {
+        return
+      }
+      const getDataStorage = localStorage.getItem('users');
+      parseUsers = JSON.parse(getDataStorage) || [];
+  const filterUser = parseUsers.find(el => el.id == selectedUserId);
+  editUserId = selectedUserId;
+  editMode = true;
+  // put values in inputs
+  const objectKys = Object.keys(filterUser)
+    objectKys.forEach(key => {
+      const input = document.querySelector(`input[name='${key}']`);
+      if (input) input.value = filterUser[key];
+      console.log(filterUser[key], "filterUser[key]");
+
+    });
+  if (filterUser.position == 'GK') {
+    joueur.style.display = 'none'
+    Gardient.style.display = 'block'
+    // Remplir le formulaire avec les valeurs de l'utilisateur
+    
+  }else{
+    joueur.style.display = 'block'
+    Gardient.style.display = 'none'
+  }
+  closePopup();
+  console.log('hohhhh', Object.keys(filterUser))
+
+  console.log('objet', filterUser)
+
+
 }

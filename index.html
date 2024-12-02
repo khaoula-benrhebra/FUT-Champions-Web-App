@@ -291,23 +291,27 @@
 
       </div>
       <div class="data">
-        <div id="reserves" class="reserve-section">
-        <h2>Réserves</h2>
-        <div id="reserve-container"></div>
-      </div>
+        <div class="rese1"></div>
+        <div class="rese2"></div>
+        <div class="rese3"></div>
+        <div class="rese4"></div>
+        <div class="rese5"></div>
+        <div class="rese6"></div>
+        <div class="rese7"></div>
+        <div class="rese8"></div>
+        <!-- <div class="rese9"></div>
+        <div class="rese10"></div>
+        <div class="rese11"></div> -->
       </div>
       <div id="popup" class="popup">
         <div class="popup-content">
             <span class="close" onclick="closePopup()">&times;</span>
             <h2>Select an Option</h2>
-            <select id="options">
-                <option value="restauration">Restauration</option>
-                <option value="formateurs">Formateurs</option>
-                <option value="administration">Administration</option>
-            </select>
-            <button onclick="submitSelection()">Submit</button>
+            <div class="rmouveAdd">
+            <button class="remove" onclick="removeUser()">Remove</button>
+            <button class="up-date"  onclick="HandleEdite()"  >Up date</button>
+            </div>
         </div>
-    </div>
     </section>
     <footer>Footer</footer>
   </div>
