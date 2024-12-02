@@ -4,24 +4,16 @@
     box-sizing: border-box;
 }
 
-ul {
-    list-style: none;
-}
-
-ul li {
-    display: inline-block;
-}
-
 .page {
     height: 100vh;
     background-color: rgb(218, 194, 194);
     display: grid;
     grid-template-columns: repeat(10, 1fr);
-    grid-template-rows: 50px 1200px 50px;
+    grid-template-rows: 50px 1200px ;
     grid-template-areas: 
         "logo logo nav nav nav nav nav nav nav nav" 
         "sec sec sec sec sec sec sec sec sec sec"
-        "foot foot foot foot foot foot foot foot foot foot";
+        
 }
 
 nav {
@@ -36,10 +28,10 @@ section {
     grid-template-columns:repeat(10, 1fr); 
     grid-template-rows: 800px 400px;
     grid-template-areas: 
-       "terrain terrain terrain terrain terrain terrain terrain form form form" 
+       "terrain terrain terrain terrain terrain terrain form form form form" 
         "data data data data data data data data data data";  
-        background: url('../images/u.jpg')  ;
-          
+    background: url('../images/u.jpg')  ;
+
 
     color: rgb(243, 240, 240);
 }
@@ -59,50 +51,7 @@ section {
      
 }
 
-.photo-plyer{
-    display: block;
-    width: 90px;
-    height: 30px;
-    background: #f8f5f5;
-    padding: 2px 0 0 20px;
-    /* padding-left: 20px; */
-    margin-top:15px ;
-    /* margin-right: 1px; */
-    border-radius: 5px;
-} 
-.flag-nation{
-    display: block;
-    width: 90px;
-    height: 30px;
-    background: #f8f5f5;
-    padding: 2px 0 0 6px;
-    /* padding-left: 20px; */
-    margin-top:15px ;
-    /* margin-right: 5px; */
-    border-radius: 5px;
-}
-.flag-club{
-    display: block;
-    width: 90px;
-    height: 30px;
-    background: #f8f5f5;
-    padding: 2px 0 0 27px;
-    /* padding-left: 20px; */
-    margin-top:15px ;
-    /* margin-right: 5px; */
-    border-radius: 5px;
-}
-
- #input-player{
-   display: none;
- }
- #input-nation{
-    display: none;
- }
- #input-club{
-    display: none;
- }
-.a1, .a2, .a3, .a4, .a5, .a6, .a7, .a8, .a9, .a10, .a11, .rese1, .rese2, .rese3, .rese4, .rese5, .rese6, .rese7, .rese8{
+.a1, .a2, .a3, .a4, .a5, .a6, .a7, .a8, .a9, .a10, .a11, .rese1, .rese2, .rese3, .rese4, .rese5, .rese6, .rese7, .rese8, .rese9, .rese10, .rese11{
     position: relative;
     /* background-color: blue; */
     background-image: url('../images/q-removebg-preview.png');
@@ -161,7 +110,7 @@ section {
 .name{    
     font-weight: bold;
     font-size: 12px;
-    width: 80px;
+    font-weight: 700;
     margin-left: 6px;
     text-wrap: wrap;
     /* color: #00FFFF; */
@@ -273,11 +222,7 @@ section {
 }
 
 
-footer {
-    grid-area: foot;
-    background-color: rgb(150, 174, 174);
-    color: black;
-}
+
 
 /* ----------------popup--------- */
 .popup {
@@ -304,9 +249,6 @@ footer {
     margin: 20px 0;
 }
 .close {
-    /* position: absolute; */
-    /* top: 10px;
-    right: 10px; */
     display: flex;
     justify-self: end;
     margin-top: -20px;
@@ -335,12 +277,12 @@ footer {
     grid-area: data;
     display: grid;
     background-color: rgb(2, 2, 2);
-    /* background: url('../images/mm.jpg') no-repeat ; */
     background: url('../images/mm.jpg') ;
     background-size: cover;
     color: #ffff;
     grid-template-columns: repeat(7,1fr);
     grid-template-rows: repeat(2,1fr); 
+    /* height: 55vh; */
 }
 .rese1{
     grid-area: 1 / 1 / 2 / 2;
@@ -366,3 +308,77 @@ grid-area: 1/3/2/4;
 .rese8{
     grid-area: 2/1/3/2;
 }
+.rese9{
+    grid-area: 2/2/3/3;
+}
+.rese10{
+    grid-area: 2/3/3/4;
+}
+.rese11{
+    grid-area: 2/4/3/5;
+}
+
+@media (max-width: 768px) {
+    section {
+        grid-template-columns: 1fr; 
+        grid-template-rows: 70vh 60vh 40vh; 
+        grid-template-areas:
+            "terrain"
+            "form"
+            "data";
+    }
+  
+    .terrain {
+        grid-area: terrain;
+    }
+  
+    .form {
+        grid-area: form;
+  height: 60vh;
+        overflow: scroll;
+    }
+  
+    .data {
+        grid-area: data;
+       
+    }
+    .overlay-image {
+        width: 45px;
+        height: 40px;
+     }
+     
+.infoUser {
+    gap: 6px;
+        margin-left: -21px;
+}
+
+.clubInfos h4 {
+    margin-bottom: 1px;
+    font-size: 7px;
+}
+.nat {
+    width: 10px;
+    height: 10px;
+    margin-bottom: 1%;
+    margin-top: 1%;
+}
+.club{
+    width: 10px;
+  height: 10px;
+  margin-bottom: 4px;
+}
+.profile {
+    margin-right: 84%;
+    margin-top: -26%;
+}
+.name {
+    font-size: 5px;
+    margin-left: 6px;
+    text-wrap: wrap;
+
+}
+.rat, .post, .pace, .shooting, .passing, .dribbling, .defending, .physical{
+    font-size: 4px;
+ 
+}
+  }
