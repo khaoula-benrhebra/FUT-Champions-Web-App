@@ -30,7 +30,7 @@ section {
     grid-template-areas: 
        "terrain terrain terrain terrain terrain terrain form form form form" 
         "data data data data data data data data data data";  
-    background: url('../images/u.jpg')  ;
+    background: url('../images/background.jpg')  ;
 
 
     color: rgb(243, 240, 240);
@@ -54,7 +54,7 @@ section {
 .a1, .a2, .a3, .a4, .a5, .a6, .a7, .a8, .a9, .a10, .a11, .rese1, .rese2, .rese3, .rese4, .rese5, .rese6, .rese7, .rese8, .rese9, .rese10, .rese11{
     position: relative;
     /* background-color: blue; */
-    background-image: url('../images/q-removebg-preview.png');
+    background-image: url('../images/carteplayer.png');
     background-repeat: no-repeat;
     background-position: left;
     background-size: contain;
@@ -277,7 +277,7 @@ section {
     grid-area: data;
     display: grid;
     background-color: rgb(2, 2, 2);
-    background: url('../images/mm.jpg') ;
+    background: url('../images/terrain3.jpg') ;
     background-size: cover;
     color: #ffff;
     grid-template-columns: repeat(7,1fr);

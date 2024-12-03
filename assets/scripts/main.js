@@ -97,48 +97,49 @@ function initializeFormValidation() {
 
 initializeFormValidation()
 
-function handleAddUser() {
-  // Récupérer uniquement les champs visibles
-  const visibleInputs = Array.from(myForm.elements).filter(
-    (input) =>
-      input.type !== 'hidden' && input.name && input.offsetParent !== null // Vérifie si l'élément est visible
-  )
 
-  // Créer un objet avec les champs visibles
-  const visibleData = visibleInputs.reduce((acc, input) => {
-    acc[input.name] = input.value
-    return acc
-  }, {})
-  if (!editMode && !editUserId ) {
-      // Générer un identifiant unique pour l'utilisateur
-      const uniqueId = generateUniqueId();
-      visibleData.id = uniqueId; // Ajouter l'ID unique à l'objet utilisateur
-    
-      const getDataStorage = localStorage.getItem('users');
-      parseUsers = JSON.parse(getDataStorage) || [];
-      let data = parseUsers
-      data.push(visibleData)
-      localStorage.setItem('users', JSON.stringify(data))
-  }else if(editMode && editUserId){
-    const getDataStorage = localStorage.getItem('users');
-    parseUsers = JSON.parse(getDataStorage) || [];
-    let users = parseUsers
-    const filterUserWithoutUpdatedUser = users.filter(user => user.id !== editUserId);
-    visibleData.id = editUserId
-    filterUserWithoutUpdatedUser.push(visibleData)
-    localStorage.setItem('users', JSON.stringify(filterUserWithoutUpdatedUser))
+
+function handleAddUser() {
+  // Récupérer tous les champs du formulaire
+  const allInputs = Array.from(myForm.elements).filter((input) => input.name);
+
+  // Créer un objet contenant les données des champs du formulaire
+  const formData = allInputs.reduce((acc, input) => {
+    acc[input.name] = input.value;
+    return acc;
+  }, {});
+
+  if (!editMode && !editUserId) {
+    // Générer un identifiant unique pour le nouvel utilisateur
+    const uniqueId = generateUniqueId();
+    formData.id = uniqueId;
+
+    // Récupérer les utilisateurs depuis le localStorage
+    const storedUsers = JSON.parse(localStorage.getItem('users')) || [];
+    storedUsers.push(formData);
+    localStorage.setItem('users', JSON.stringify(storedUsers));
+  } else if (editMode && editUserId) {
+    // Mise à jour des données de l'utilisateur existant
+    const storedUsers = JSON.parse(localStorage.getItem('users')) || [];
+    const updatedUsers = storedUsers.filter((user) => user.id !== editUserId);
+
+    // Ajouter les nouvelles données avec l'ID mis à jour
+    formData.id = editUserId;
+    updatedUsers.push(formData);
+    localStorage.setItem('users', JSON.stringify(updatedUsers));
   }
 
-  console.log('Données visibles :', visibleData)
   // Réinitialiser le formulaire
-  myForm.reset()
+  myForm.reset();
 
   // Réinitialiser les sections visibles
-  joueur.style.display = 'none'
-  Gardient.style.display = 'none'
+  joueur.style.display = 'none';
+  Gardient.style.display = 'none';
 
-  alert('Utilisateur ajouté avec succès !')
+  alert('Utilisateur ajouté avec succès !');
 }
+
+
 
 // Fonction pour générer un ID unique
 function generateUniqueId() {
