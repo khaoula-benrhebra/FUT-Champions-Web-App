@@ -226,7 +226,7 @@ function generatePlayerHTML(user) {
           <div class="profile">
             <div class="clubInfos">
               <h4 class="rat">${user?.position == "GK" ? user?.ratingGK : user?.rating}</h4>
-              <h4 class="post">${user?.position}</h4>
+              <h4 class="post ">${user?.position}</h4>
               <div class="nat"><img src=${user?.nationalite} alt=""></div>
               <div class="club"><img src=${user?.club} width="30" height="30"></div>
             </div>
@@ -276,6 +276,7 @@ function removeUser() {
   parseUsers = parseUsers.filter(user => user.id !== selectedUserId);
   localStorage.setItem('users', JSON.stringify(parseUsers));
   addElementHtml();
+
   closePopup();
 }
 
@@ -310,6 +311,16 @@ function HandleEdite() {
 
 
 }
+  
+
+let ter = document.querySelector('.terrain');
+console.log(ter);
+
+let child=ter.querySelectorAll('div');
+console.log(child);
+
+
+
 
 
 
