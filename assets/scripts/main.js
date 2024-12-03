@@ -100,48 +100,36 @@ initializeFormValidation()
 
 
 function handleAddUser() {
-  // Récupérer tous les champs du formulaire
+  
   const allInputs = Array.from(myForm.elements).filter((input) => input.name);
 
-  // Créer un objet contenant les données des champs du formulaire
+ 
   const formData = allInputs.reduce((acc, input) => {
     acc[input.name] = input.value;
     return acc;
   }, {});
 
   if (!editMode && !editUserId) {
-    // Générer un identifiant unique pour le nouvel utilisateur
+    
     const uniqueId = generateUniqueId();
     formData.id = uniqueId;
-
-    // Récupérer les utilisateurs depuis le localStorage
     const storedUsers = JSON.parse(localStorage.getItem('users')) || [];
     storedUsers.push(formData);
     localStorage.setItem('users', JSON.stringify(storedUsers));
   } else if (editMode && editUserId) {
-    // Mise à jour des données de l'utilisateur existant
     const storedUsers = JSON.parse(localStorage.getItem('users')) || [];
     const updatedUsers = storedUsers.filter((user) => user.id !== editUserId);
-
-    // Ajouter les nouvelles données avec l'ID mis à jour
     formData.id = editUserId;
     updatedUsers.push(formData);
     localStorage.setItem('users', JSON.stringify(updatedUsers));
   }
-
-  // Réinitialiser le formulaire
   myForm.reset();
-
-  // Réinitialiser les sections visibles
   joueur.style.display = 'none';
   Gardient.style.display = 'none';
 
   alert('Utilisateur ajouté avec succès !');
 }
 
-
-
-// Fonction pour générer un ID unique
 function generateUniqueId() {
   return 'user-' + Math.floor(Math.random() * 1000);
 }
@@ -174,7 +162,6 @@ function addElementHtml() {
     "ST": document.getElementsByClassName("rese7")[0],
     "RW": document.getElementsByClassName("rese8")[0],
   };
-  // Vider tout contenu existant pour chaque conteneur
   Object.values(containers).forEach(container => container.innerHTML = "");
   Object.values(reserves).forEach(reserve => reserve.innerHTML = "");
 
@@ -229,7 +216,7 @@ function addElementHtml() {
     } else {
         reserves[user.position]?.insertAdjacentHTML('beforeend', generatePlayerHTML(user));
     }
-    console.log('positionCounters', positionCounters)
+    
   });
 }
 addElementHtml()
@@ -269,7 +256,6 @@ let selectedUserId = null;
 
 function openPopup(id) {
   selectedUserId = id;
-  console.log('insideopen pup', id);
 
   document.getElementById("popup").style.display = "flex";
 
@@ -289,7 +275,6 @@ function removeUser() {
   let parseUsers = JSON.parse(localStorage.getItem('users')) || [];
   parseUsers = parseUsers.filter(user => user.id !== selectedUserId);
   localStorage.setItem('users', JSON.stringify(parseUsers));
-  console.log('inside remove', selectedUserId);
   addElementHtml();
   closePopup();
 }
@@ -322,9 +307,6 @@ function HandleEdite() {
     Gardient.style.display = 'none'
   }
   closePopup();
-  console.log('hohhhh', Object.keys(filterUser))
-
-  console.log('objet', filterUser)
 
 
 }
