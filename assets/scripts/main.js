@@ -220,52 +220,52 @@ function addElementHtml() {
   });
 }
 addElementHtml()
-function generatePlayerHTML(user) {
-  return `<div class="image-container" onclick="openPopup('${user.id}')">
-        <div class="elementPosition">
-          <div class="profile">
-            <div class="clubInfos">
-              <h4 class="rat">${user?.position == "GK" ? user?.ratingGK : user?.rating}</h4>
-              <h4 class="post ">${user?.position}</h4>
-              <div class="nat"><img src=${user?.nationalite} alt=""></div>
-              <div class="club"><img src=${user?.club} width="30" height="30"></div>
-            </div>
-            <div>
-              <img src=${user?.joueur} alt="" class="overlay-image">
-              <h4 class="name">${user?.name}</h4>
-            </div>
-          </div>
-          <div class="infoUser">
-            <div class="secOne">
-              <span class="pace">${user?.position == "GK" ? "DIV" : "PAC"} : ${user?.position == "GK" ? user?.diving : user?.pace}</span>
-              <span class="shooting">${user?.position == "GK" ? "HDL" : "SHO"} : ${user?.position == "GK" ? user?.handling : user?.shooting}</span>
-              <span class="passing">${user?.position == "GK" ? "KIC" : "PAS"} : ${user?.position == "GK" ? user?.kicking : user?.passing}</span>
-            </div>
-            <div class="secTwo">
-              <span class="dribbling">${user?.position == "GK" ? "REF" : "DRI"} : ${user?.position == "GK" ? user?.reflexes : user?.dribbling}</span>
-              <span class="defending">${user?.position == "GK" ? "SPE" : "DEF"} : ${user?.position == "GK" ? user?.speed : user?.defending}</span>
-              <span class="physical">${user?.position == "GK" ? "POS" : "PHY"} : ${user?.position == "GK" ? user?.positioning : user?.physical}</span>
-            </div>
-          </div>
-        </div>
-      </div>`;
-}
+// function generatePlayerHTML(user) {
+//   return `<div class="image-container" onclick="openPopup('${user.id}')">
+//         <div class="elementPosition">
+//           <div class="profile">
+//             <div class="clubInfos">
+//               <h4 class="rat">${user?.position == "GK" ? user?.ratingGK : user?.rating}</h4>
+//               <h4 class="post ">${user?.position}</h4>
+//               <div class="nat"><img src=${user?.nationalite} alt=""></div>
+//               <div class="club"><img src=${user?.club} width="30" height="30"></div>
+//             </div>
+//             <div>
+//               <img src=${user?.joueur} alt="" class="overlay-image">
+//               <h4 class="name">${user?.name}</h4>
+//             </div>
+//           </div>
+//           <div class="infoUser">
+//             <div class="secOne">
+//               <span class="pace">${user?.position == "GK" ? "DIV" : "PAC"} : ${user?.position == "GK" ? user?.diving : user?.pace}</span>
+//               <span class="shooting">${user?.position == "GK" ? "HDL" : "SHO"} : ${user?.position == "GK" ? user?.handling : user?.shooting}</span>
+//               <span class="passing">${user?.position == "GK" ? "KIC" : "PAS"} : ${user?.position == "GK" ? user?.kicking : user?.passing}</span>
+//             </div>
+//             <div class="secTwo">
+//               <span class="dribbling">${user?.position == "GK" ? "REF" : "DRI"} : ${user?.position == "GK" ? user?.reflexes : user?.dribbling}</span>
+//               <span class="defending">${user?.position == "GK" ? "SPE" : "DEF"} : ${user?.position == "GK" ? user?.speed : user?.defending}</span>
+//               <span class="physical">${user?.position == "GK" ? "POS" : "PHY"} : ${user?.position == "GK" ? user?.positioning : user?.physical}</span>
+//             </div>
+//           </div>
+//         </div>
+//       </div>`;
+// }
 
 
-let selectedUserId = null;
+// let selectedUserId = null;
 
-function openPopup(id) {
-  selectedUserId = id;
+// function openPopup(id) {
+//   selectedUserId = id;
 
-  document.getElementById("popup").style.display = "flex";
+//   document.getElementById("popup").style.display = "flex";
 
 
-}
+// }
 
-function closePopup() {
-  document.getElementById("popup").style.display = "none";
-  selectedUserId = null;
-}
+// function closePopup() {
+//   document.getElementById("popup").style.display = "none";
+//   selectedUserId = null;
+// }
 
 
 function removeUser() {
@@ -277,7 +277,7 @@ function removeUser() {
   localStorage.setItem('users', JSON.stringify(parseUsers));
   addElementHtml();
 
-  closePopup();
+  // closePopup();
 }
 
 
@@ -307,17 +307,17 @@ function HandleEdite() {
     joueur.style.display = 'block'
     Gardient.style.display = 'none'
   }
-  closePopup();
+  // closePopup();
 
 
 }
   
 
-let ter = document.querySelector('.terrain');
-console.log(ter);
+// let ter = document.querySelector('.terrain');
+// console.log(ter);
 
-let child=ter.querySelectorAll('div');
-console.log(child);
+// let child=ter.querySelectorAll('div');
+// console.log(child);
 
 
 
